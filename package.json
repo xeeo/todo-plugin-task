@@ -1,5 +1,6 @@
 {
   "name": "todo-plugin-task",
+  "version": "0.0.1",
   "scripts": {
     "test": "mocha -w --debug test/**/*.mocha.js"
   },
