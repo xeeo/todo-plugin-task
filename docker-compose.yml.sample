@@ -1,0 +1,11 @@
+plugin:
+ build: .
+ volumes:
+  - .:/home/plugin
+ command: npm test
+ ports:
+  - "3000:3000"
+  - "5858:5858"
+ environment:
+  DEBUG: true
+  NODE_ENV: development
