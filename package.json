@@ -1,7 +1,7 @@
 {
   "name": "test-plugin-task",
   "scripts": {
-    "test": "mocha -w test/**/*.mocha.js"
+    "test": "mocha -w --debug test/**/*.mocha.js"
   },
   "devDependencies": {
     "hapi": "^8.8.1",
