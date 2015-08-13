@@ -1,5 +1,5 @@
 {
-  "name": "test-plugin-task",
+  "name": "todo-plugin-task",
   "scripts": {
     "test": "mocha -w --debug test/**/*.mocha.js"
   },
