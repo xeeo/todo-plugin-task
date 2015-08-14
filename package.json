@@ -1,8 +1,9 @@
 {
   "name": "todo-plugin-task",
   "version": "0.0.1",
+  "main": "src/plugin.js",
   "scripts": {
-    "test": "mocha -w --debug test/**/*.mocha.js"
+    "test": "mocha -w test/**/*.mocha.js"
   },
   "devDependencies": {
     "hapi": "^8.8.1",

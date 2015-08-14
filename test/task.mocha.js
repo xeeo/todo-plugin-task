@@ -24,7 +24,7 @@ function inject(options) {
     return defer.promise;
 };
 
-describe('task-plugin -', function () {
+describe('TASK PLUGIN', function () {
 
     before(function (done) {
         server.connection({
@@ -33,7 +33,7 @@ describe('task-plugin -', function () {
 
         server.register([
             {
-                register: require('../'),
+                register: require('../src/plugin'),
                 options : {}
             }
         ], function (error) {
@@ -50,49 +50,31 @@ describe('task-plugin -', function () {
         done();
     });
 
-    describe('on route /task/showText -', function () {
-
-        it('GET should respond with a text "hey"', function () {
-            return inject({
-                method: "GET",
-                url   : "/task/showText"
-            }).then(function (response) {
-                (response.statusCode).should.equal(200);
-                (response.result).should.eql({text: 'hey'});
-            });
+    it('should respond with a text "hey" on route /task/say-hey', function () {
+        return inject({
+            method: "GET",
+            url   : "/task/say-hey"
+        }).then(function (response) {
+            (response.statusCode).should.equal(200);
+            (response.result).should.eql({text: 'hey'});
         });
-
     });
 
-    describe('create task -', function () {
-
-        it('should have a POST and PUT route to /task/create', function () {
-            return q.all([
-                inject({
-                    method: "POST",
-                    url   : "/task/create"
-                }),
-                inject({
-                    method: "PUT",
-                    url   : "/task/create"
-                })
-            ]).then(function(responses) {
-                responses.forEach(function(response) {
-                    (response.statusCode).should.equal(200);
-                });
-            });
-        });
-
-        it('GET should respond with a text "hey"', function () {
-            return inject({
-                method: "GET",
-                url   : "/task/showText"
-            }).then(function (response) {
+    it('should have a POST and PUT method on route /task/create', function () {
+        return q.all([
+            inject({
+                method: "POST",
+                url   : "/task/create"
+            }),
+            inject({
+                method: "PUT",
+                url   : "/task/create"
+            })
+        ]).then(function(responses) {
+            responses.forEach(function(response) {
                 (response.statusCode).should.equal(200);
-                (response.result).should.eql({text: 'hey'});
             });
         });
-
     });
 
 });
